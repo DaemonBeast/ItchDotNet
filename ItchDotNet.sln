@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItchDotNet", "ItchDotNet\ItchDotNet.csproj", "{203DADB0-148F-469C-9124-090B344F096C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItchDotNet.Sandbox", "ItchDotNet.Sandbox\ItchDotNet.Sandbox.csproj", "{AB4A5AB1-FE00-426C-BA3E-F840BDC11C48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{203DADB0-148F-469C-9124-090B344F096C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203DADB0-148F-469C-9124-090B344F096C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203DADB0-148F-469C-9124-090B344F096C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203DADB0-148F-469C-9124-090B344F096C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4A5AB1-FE00-426C-BA3E-F840BDC11C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4A5AB1-FE00-426C-BA3E-F840BDC11C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4A5AB1-FE00-426C-BA3E-F840BDC11C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4A5AB1-FE00-426C-BA3E-F840BDC11C48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
