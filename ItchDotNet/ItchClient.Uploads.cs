@@ -10,7 +10,7 @@ public partial class ItchClient
         public async Task<Upload> Upload(long uploadId)
         {
             var uri = string.Format(Constants.Endpoints.Itch.Api.Uploads.Upload, uploadId);
-            var response = await client.GetAsync(uri);
+            var response = await client._handler.GetAsync(uri);
 
             using var document = await JsonDocument.ParseAsync(await response.Content.ReadAsStreamAsync());
             var root = document.RootElement;
@@ -27,7 +27,7 @@ public partial class ItchClient
                 Query = $"?download_key_id={downloadKeyId}"
             };
 
-            var response = await client.GetAsync(uriBuilder.ToString());
+            var response = await client._handler.GetAsync(uriBuilder.ToString());
 
             using var document = await JsonDocument.ParseAsync(await response.Content.ReadAsStreamAsync());
             var root = document.RootElement;
@@ -38,7 +38,7 @@ public partial class ItchClient
         public async IAsyncEnumerable<Build> Builds(long uploadId)
         {
             var uri = string.Format(Constants.Endpoints.Itch.Api.Uploads.Builds, uploadId);
-            var response = await client.GetAsync(uri);
+            var response = await client._handler.GetAsync(uri);
 
             Build? lastBuild = null;
             using (var document = await JsonDocument.ParseAsync(await response.Content.ReadAsStreamAsync()))

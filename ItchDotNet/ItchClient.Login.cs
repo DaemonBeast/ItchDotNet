@@ -15,25 +15,6 @@ public partial class ItchClient
             bool forceRecaptcha = false,
             CancellationToken cancellationToken = default)
         {
-            var response = await WithPasswordInternal(
-                username,
-                password,
-                onRecaptchaNeeded,
-                forceRecaptcha,
-                cancellationToken);
-
-            client.ApiKey = response.Key.Key;
-
-            return response;
-        }
-
-        private async Task<Structs.Login.WithPassword.Response> WithPasswordInternal(
-            string username,
-            string password,
-            RecaptchaNeededHandler onRecaptchaNeeded,
-            bool forceRecaptcha = false,
-            CancellationToken cancellationToken = default)
-        {
             var baseContentBuilder = new ContentBuilder()
                 .Add("source", "desktop")
                 .Add("username", username)
@@ -44,7 +25,7 @@ public partial class ItchClient
                 .Add("force_recaptcha", forceRecaptcha)
                 .Build();
 
-            var response = await client.PostAsync(Constants.Endpoints.Itch.Api.Login.WithPassword, content);
+            var response = await client._handler.PostAsync(Constants.Endpoints.Itch.Api.Login.WithPassword, content);
 
             using var document = await JsonDocument.ParseAsync(
                 await response.Content.ReadAsStreamAsync(cancellationToken),
@@ -69,7 +50,7 @@ public partial class ItchClient
                     .Build();
 
                 var recaptchaResponse =
-                    await client.PostAsync(Constants.Endpoints.Itch.Api.Login.WithPassword, recaptchaContent);
+                    await client._handler.PostAsync(Constants.Endpoints.Itch.Api.Login.WithPassword, recaptchaContent);
 
                 using var recaptchaDocument =
                     await JsonDocument.ParseAsync(

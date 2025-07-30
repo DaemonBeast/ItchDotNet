@@ -9,7 +9,7 @@ public partial class ItchClient
     {
         public async IAsyncEnumerable<DownloadKey> OwnedKeys()
         {
-            if (client.ApiKey == null) throw new Exception("Must be logged in to get owned keys.");
+            if (client._handler.ApiKey == null) throw new Exception("Must be logged in to get owned keys.");
 
             var page = 1;
 
@@ -21,7 +21,7 @@ public partial class ItchClient
                     Query = $"?page={page}"
                 };
 
-                var response = await client.GetAsync(uriBuilder.ToString());
+                var response = await client._handler.GetAsync(uriBuilder.ToString());
 
                 using var document = await JsonDocument.ParseAsync(await response.Content.ReadAsStreamAsync());
 
